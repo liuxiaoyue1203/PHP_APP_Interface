@@ -1,6 +1,7 @@
 <?php
 
-// 让crontab定时执行的脚本程序     */5 * * * * /usr/bin/php /data/www/app/cron.php
+// 让crontab定时执行的脚本程序     
+// */5 * * * * /usr/bin/php /data/www/app/cron.php
 
 // 想获取video中 6条数据
 

@@ -1,5 +1,6 @@
 <?php
 // http://app.com/list.php?page-=1&pagesize=12
+// APP 获取首页数据  从数据库获取
 require_once('./response.php');
 require_once('./file.php');
 

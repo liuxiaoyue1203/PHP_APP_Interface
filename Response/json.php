@@ -1,6 +1,6 @@
 <?php
 /**
- * 按xml方式输出通信数据
+ * 按Json方式输出通信数据
 */
 class Json extends Api {
 	public function response($code, $message = '', $data = array()) {
@@ -13,8 +13,9 @@ class Json extends Api {
 			'message' => $message,
 			'data' => $data
 		);
-
-		echo json_encode($result);
+		//$data = "输出json数据";
+		//$newData = iconv('UTF-8','GBK',$data); // 此函数用于字符串的编码转换 UTF-8 => GBK
+		echo json_encode($result); //对变量进行 JSON 编码,只接受UTF-8编码的数据
 		exit;
 	}
 }

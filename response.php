@@ -49,11 +49,12 @@ class Response {
 		}
 
 		$result = array(
-			'code' => $code,
+			'code'    => $code,
 			'message' => $message,
-			'data' => $data
+			'data'    => $data
 		);
-
+		// json_encode函数传递中文的话,会将中文转换为unicode编码,所以输出后是这个编码,json_decode后就是正常的值了
+		//想在输出json_encode的时候也是中文的话,echo urldecode(json_encode(urlencode("JSON中文输出解决方案")));
 		echo json_encode($result);
 		exit;
 	}
@@ -63,7 +64,7 @@ class Response {
 	* @param integer $code 状态码
 	* @param string $message 提示信息
 	* @param array $data 数据
-	* return string
+	*  return string
 	*/
 	public static function xmlEncode($code, $message, $data = array()) {
 		if(!is_numeric($code)) {
@@ -76,16 +77,16 @@ class Response {
 			'data' => $data,
 		);
 
-		header("Content-Type:text/xml");
-		$xml = "<?xml version='1.0' encoding='UTF-8'?>\n";
-		$xml .= "<root>\n";
+		header("Content-Type:text/xml"); // 发送头信息，返回xml格式的响应数据
+		$xml = "<?xml version='1.0' encoding='UTF-8'?>\n"; // xml头信息
+		$xml .= "<root>\n"; 
 
 		$xml .= self::xmlToEncode($result);
 
 		$xml .= "</root>";
 		echo $xml;
 	}
-
+	// 递归分析数据里面的数组
 	public static function xmlToEncode($data) {
 
 		$xml = $attr = "";

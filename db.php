@@ -32,7 +32,7 @@ class Db {
 			mysql_select_db($this->_dbConfig['database'], self::$_connectSource);
 			mysql_query("set names UTF8", self::$_connectSource);
 		}
-		return self::$_connectSource;
+		return self::$xml_error_string;
 	}
 }
 /*$connect = Db::getInstance()->connect();
